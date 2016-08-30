@@ -1,0 +1,8 @@
+#!/bin/bash
+curl -X POST --header "Content-Type: application/json" --header "Accept: application/json" --header "x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NzE0ODQwZDA4OGJjMDA2MDBjMjJmMzkiLCJhY2NvdW50SWQiOiI1NzE0ODQwZDA4OGJjMDA2MDBjMjJmM2EiLCJpYXQiOjE0Njc4ODM2MDgsImV4cCI6MTQ3MDQ3NTYwOH0.dhMBevpVXD6smwtPCJdfPZnEQcyjldngkNgaH7Dzr8c" -d "{
+  \"branch\": \"master\",
+  \"sha\": \"1ca4a117f1731fd6dfdaa14e8d2572d5a579e37f\",
+  \"buildFlags\": {
+    \"nocache\": false
+  }
+}" "https://g-staging.codefresh.io/api/builds/577cefdcc31d9c05001dd867"
