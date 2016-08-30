@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Application {
     @RequestMapping("/")
     public String home() {
-        return "Hello Docker World 6";
+        return "Hello Docker World 7";
     }
 
     public static void main(String[] args) {
