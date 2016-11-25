@@ -13,7 +13,7 @@ steps:
     candidate: ${{build-step-name}}
     tag: latest
     credentials:
-
+      username:
 #
 #  composition-step:
 #    type: composition
