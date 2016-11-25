@@ -1,4 +1,4 @@
-version: '1.0'
+version: '2.0'
 
 steps:
   build-step-name:
@@ -8,10 +8,12 @@ steps:
     dockerfile: Dockerfile
     tag: latest
 
-#  push-to-dockerhub:
-#    type: push
-#    candidate: ${{build-step-name}}
-#    tag: latest
+  push-to-dockerhub:
+    type: push
+    candidate: ${{build-step-name}}
+    tag: latest
+    credentials:
+      username:
 #
 #  composition-step:
 #    type: composition
