@@ -12,6 +12,7 @@ steps:
     type: push
     candidate: ${{build-step-name}}
     tag: latest
+    credentials:
 #
 #  composition-step:
 #    type: composition
