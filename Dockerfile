@@ -8,7 +8,7 @@ WORKDIR /code
 
 ADD pom.xml /code/pom.xml
 
-ADD1 log.sh /code/log.sh
+ADD2 log.sh /code/log.sh
 
 #RUN sh ./log.sh
 
