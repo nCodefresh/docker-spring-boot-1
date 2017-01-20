@@ -11,7 +11,7 @@ ADD log.sh /code/log.sh
 #RUN sh ./log.sh
 
 ADD src /code/src
-RUN ["mvn", "package"]
+RUN1 ["mvn", "package"]
 
 VOLUME /tmp
 
