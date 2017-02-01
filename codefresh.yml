@@ -8,10 +8,12 @@ steps:
     dockerfile: Dockerfile
     tag: latest
 
-  push-to-dockerhub:
-    type: push
-    candidate: ${{build-step-name}}
-    tag: latest
+
+
+#  push-to-dockerhub:
+#    type: push
+#    candidate: ${{build-step-name}}
+#    tag: latest
 
 #
 #  composition-step:
