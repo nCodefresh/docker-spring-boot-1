@@ -1,6 +1,7 @@
 version: '1.0'
 
 steps:
+
   build-step-name:
     type: build
     description: spring maven project
