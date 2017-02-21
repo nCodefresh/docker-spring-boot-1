@@ -9,7 +9,7 @@ services:
   new-terminal:
     build:
       context: ./
-      dockerfile: Dockerfile2
+      dockerfile: Dockerfile
   terminal:
     build:
       context: ./
