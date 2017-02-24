@@ -1,15 +1,59 @@
 version: '3'
 services:
-  my-service:
-    image: 'containers101/whomi:master'
-    volumes:
-      - my-service:/app
-    ports:
-      - '1337'
   new-terminal:
     build:
-      context: ./
+      context: ./test
       dockerfile: Dockerfile
+      args:
+          buildno: 1
+    cap_add:
+      - ALL
+
+    cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
+    command: echo echo:test
+    cgroup_parent: m-executor-abcd
+    container_name: my-web-container
+    deploy:
+      labels:
+        com.example.description: "This label will appear on the web service"
+      replicas: 6
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    resources:
+      limits:
+        cpus: '0.001'
+        memory: 50M
+      reservations:
+        cpus: '0.0001'
+        memory: 20M
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    restart_policy:
+      condition: on-failure
+      delay: 5s
+      max_attempts: 3
+      window: 120s
+    depends_on:
+        - terminal
+    dns: 8.8.8.8
+    entrypoint: /code/entrypoint.sh
+    env_file: .env
+    environment:
+      - RACK_ENV=development
+      - SHOW=true
+      - SESSION_SECRET
+    expose:
+        - "3000"
+        - "8000"
+    external_links:
+        - redis_1
+        - project_db_1:mysql
+        - project_db_1:postgresql
   terminal:
     build:
       context: ./
