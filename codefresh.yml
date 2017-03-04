@@ -7,3 +7,7 @@ steps:
     image-name: ncodefresh/docker-spring-boot-1
     dockerfile: Dockerfile
     tag: latest
+
+  unit_tests:
+    image: node:latest
+    command: echo TEST:${{TEST}}
