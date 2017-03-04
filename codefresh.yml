@@ -12,3 +12,4 @@ steps:
     image: node:latest
     commands:
       - echo TEST:${{TEST1}}
+      - echo TEST:${{TEST}}
