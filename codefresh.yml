@@ -10,5 +10,4 @@ steps:
 
   unit_tests:
     image: node:latest
-    commands:
-      - echo TEST:${{TEST}}
+    command: echo TEST:${{TEST}}
