@@ -13,8 +13,7 @@ steps:
   unit-tests:
     image: ${{build-step-name}}
     working_directory: /code
-    commands:
-      - ls -l
+
 
 #  composition_step:
 #    type: composition
