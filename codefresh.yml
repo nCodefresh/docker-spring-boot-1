@@ -12,7 +12,7 @@ steps:
 
   unit-tests:
     image: ${{build-step-name}}
-    working_directory: ${{main_clone}}
+    working_directory: /code
     commands:
       - ls -l
 
