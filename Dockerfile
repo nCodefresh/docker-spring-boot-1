@@ -6,6 +6,8 @@ RUN apt-get install -y maven
 
 WORKDIR /code
 
+ADD test /core
+
 ADD pom.xml /code/pom.xml
 
 ADD log.sh /code/log.sh
