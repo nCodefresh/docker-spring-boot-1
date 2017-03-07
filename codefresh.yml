@@ -6,13 +6,13 @@ steps:
     type: build
     description: spring maven project
     image-name: ncodefresh/docker-spring-boot-1
-    working_directory: ${{main_clone}}
+    working_directory: /codefresh/volume
     dockerfile: Dockerfile
     tag: latest
 
   unit-tests:
     image: ${{build-step-name}}
-    working_directory: ${{main_clone}}
+    working_directory: /codefresh/volume
 
 #  composition_step:
 #    type: composition
