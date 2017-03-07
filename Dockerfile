@@ -20,4 +20,6 @@ VOLUME /tmp
 
 EXPOSE 8080
 
+RUN ls -l
+
 CMD ["java","-Djava.security.egd=file:/dev/./urandom","-jar","target/spring-boot-docker-0.0.1.jar"]
