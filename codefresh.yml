@@ -14,7 +14,8 @@ steps:
     image: ${{build-step-name}}
     commands:
       - echo TEST:$TEST
-      - echo TEST1:${{TEST}}
+      - echo TEST:${{TEST}}
+      - echo TEST1:${{TEST1}}
 
 #  composition_step:
 #    type: composition
