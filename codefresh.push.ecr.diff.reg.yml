@@ -5,7 +5,7 @@ steps:
   build_step:
     type: build
     description: spring maven project
-    image-name: ncodefresh/docker-spring-boot-1
+    image-name: ncodefresh/docker-spring
     working_directory: ${{main_clone}}
     dockerfile: Dockerfile
     tag: latest
@@ -14,7 +14,7 @@ steps:
     type: push
     description: Free text description
     candidate: ${{build_step}}
-    tag: ${{CF_BRANCH}}
+    tag: UC4
     provider: 'ecr'
     registry: ${{AWS_REGISTRY}}
     accessKeyId: ${{AWS_ACCESS_KEY}}
@@ -25,7 +25,7 @@ steps:
     type: push
     description: Free text description
     candidate: ${{build_step}}
-    tag: ${{CF_BRANCH}}
+    tag: UC4
     credentials:
       username: ${{DOCKERHUB_USERNAME}}
       password: ${{DOCKERHUB_PASSWORD}}
