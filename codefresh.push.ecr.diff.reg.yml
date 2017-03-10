@@ -34,4 +34,4 @@ steps:
     type: push
     description: Free text description
     candidate: ${{build_step}}
-    tag: ${{CF_BRANCH}}
+    tag: latest
