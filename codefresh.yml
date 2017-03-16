@@ -17,6 +17,7 @@ steps:
     working_directory: ${{main_clone}}
     dockerfile: Dockerfile
     tag: latest
+    no_cache: true
 
 #  push_to_step:
 #    title: Push to Quay.io
