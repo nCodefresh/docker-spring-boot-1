@@ -2,7 +2,7 @@ version: '1.0'
 
 steps:
 
-  build_step:
+  build_step_1:
     type: build
     description: spring maven project
     image-name: ncodefresh/docker-spring-boot-1
@@ -10,7 +10,7 @@ steps:
     dockerfile: Dockerfile
     tag: latest
 
-  build_step:
+  build_step_2:
     type: build
     description: spring maven project
     image-name: ncodefresh/docker-spring-boot-1
