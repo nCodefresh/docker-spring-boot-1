@@ -10,14 +10,22 @@ steps:
     dockerfile: Dockerfile
     tag: latest
 
-  push_to_step:
-    title: Push to Quay.io
-    type: push
-    candidate: ${{build_step}}
-    registry: quay.io
-    credentials:
-      username: ${{USERNAME}}
-      password: ${{TOKEN}}
+  build_step:
+    type: build
+    description: spring maven project
+    image-name: ncodefresh/docker-spring-boot-1
+    working_directory: ${{main_clone}}
+    dockerfile: Dockerfile
+    tag: latest
+
+#  push_to_step:
+#    title: Push to Quay.io
+#    type: push
+#    candidate: ${{build_step}}
+#    registry: quay.io
+#    credentials:
+#      username: ${{USERNAME}}
+#      password: ${{TOKEN}}
 
 #  unit-tests:
 #    image: ${{build-step-name}}
