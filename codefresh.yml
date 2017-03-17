@@ -13,8 +13,8 @@ steps:
   freestyle_step:
     image: node:latest
     commands:
-      - echo TEST: ${{TEST}}
-      - echo TEST1: ${{TEST1}}
+      - echo TEST:${{TEST}}
+      - echo TEST1:${{TEST1}}
 
 #  push_to_step:
 #    title: Push to Quay.io
