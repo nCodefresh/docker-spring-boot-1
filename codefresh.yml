@@ -10,14 +10,11 @@ steps:
     dockerfile: Dockerfile
     tag: latest
 
-  build_step_2:
-    type: build
-    description: spring maven project
-    image-name: ncodefresh/docker-spring-boot-1
-    working_directory: ${{main_clone}}
-    dockerfile: Dockerfile
-    tag: latest
-    no_cache: true
+  freestyle_step:
+    image: node:latest
+    commands:
+      - echo TEST: ${{TEST}}
+      - echo TEST1: ${{TEST1}}
 
 #  push_to_step:
 #    title: Push to Quay.io
