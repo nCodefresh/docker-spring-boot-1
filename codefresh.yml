@@ -1,26 +1,26 @@
 version: '1.0'
 
 steps:
-  eight_docker_clone:
-      type: git-clone
-      description: cloning eight-docker
-      repo: 'https://github.com/nCodefresh/docker-spring-boot-1.git'
-      revision: master
+#  eight_docker_clone:
+#      type: git-clone
+#      description: cloning eight-docker
+#      repo: 'https://github.com/nCodefresh/docker-spring-boot-1.git'
+#      revision: master
+#
+#  build_step:
+#    type: build
+#    description: spring maven project
+#    image-name: ncodefresh/docker-spring-boot-1
+#    working_directory: ${{eight_docker_clone}}
+#    dockerfile: Dockerfile
+#    tag: latest
 
-  build_step:
-    type: build
-    description: spring maven project
-    image-name: ncodefresh/docker-spring-boot-1
-    working_directory: ${{eight_docker_clone}}
-    dockerfile: Dockerfile
-    tag: latest
-
-#  freestyle_step:
-#    image: node:latest
-#    commands:
-#      - echo TEST:${{TEST}}
-#      - echo TEST1:${{TEST1}}
-#      - echo TEST2:${{TEST2}}
+  freestyle_step:
+    image: node:latest
+    commands:
+      - echo TEST:${{TEST}}
+      - echo TEST1:${{TEST1}}
+      - echo TEST2:${{TEST2}}
 
 #  push_to_step:
 #    title: Push to Quay.io
