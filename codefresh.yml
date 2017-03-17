@@ -15,6 +15,7 @@ steps:
     commands:
       - echo TEST:${{TEST}}
       - echo TEST1:${{TEST1}}
+      - echo TEST2:${{TEST2}}
 
 #  push_to_step:
 #    title: Push to Quay.io
