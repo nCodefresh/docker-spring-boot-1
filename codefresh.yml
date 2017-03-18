@@ -3,35 +3,35 @@ steps:
 
   build_step_name:
     type: build
-    image-name:
+    image-name: nikolai/test
     dockerfile: Dockerfile
-    tag: latest
+    tag: ${{CF_SHORT_REVISION}}
 
-  push_to_dockerhub:
-    type: push
-    title: Step Title
-    description: Free text description
-    candidate: ${{build_step_name}}
-    tag: latest
-    credentials:
-      username: ${{DOCKER_USERNAME}}
-      password: ${{DOCKER_PASSWORD}}
-    when:
-      branch:
-        only:
-          - master
-
-  unit_tests:
-    image: php:7.0
-    commands:
-      - phpunit Test.php
-
-  freestyle_step:
-    image: node:latest
-    commands:
-      - echo TEST:${{TEST}}
-      - echo TEST1:${{TEST1}}
-      - echo TEST2:${{TEST2}}
+#  push_to_dockerhub:
+#    type: push
+#    title: Step Title
+#    description: Free text description
+#    candidate: ${{build_step_name}}
+#    tag: latest
+#    credentials:
+#      username: ${{DOCKER_USERNAME}}
+#      password: ${{DOCKER_PASSWORD}}
+#    when:
+#      branch:
+#        only:
+#          - master
+#
+#  unit_tests:
+#    image: php:7.0
+#    commands:
+#      - phpunit Test.php
+#
+#  freestyle_step:
+#    image: node:latest
+#    commands:
+#      - echo TEST:${{TEST}}
+#      - echo TEST1:${{TEST1}}
+#      - echo TEST2:${{TEST2}}
 
 #  push_to_step:
 #    title: Push to Quay.io
