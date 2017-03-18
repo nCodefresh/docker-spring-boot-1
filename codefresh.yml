@@ -1,13 +1,5 @@
 version: '1.0'
 steps:
-  unit_tests:
-    image: php:5.6
-    working_directory: ${{main_clone}}
-    commands:
-      - install-dependencies.sh
-      - phpunit Test.php
-    environment:
-      -
 
   build_step_name:
     type: build
