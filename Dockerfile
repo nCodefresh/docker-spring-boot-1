@@ -2,7 +2,7 @@ FROM java:8
 
 ARG archive
 
-RUN echo archive:$archive
+RUN echo archive > test.txt
 
 RUN apt-get update
 

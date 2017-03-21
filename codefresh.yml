@@ -6,9 +6,12 @@ steps:
     image-name: nikolai/test
     dockerfile: Dockerfile
     tag: ${{CF_SHORT_REVISION}}
-    build_arguments:
-      - 'version=${{CF_SHORT_REVISION}}'
-      - archive=$(pwd)
+
+  check_build_step:
+    image: node:latest
+    working_directory: ${{build_step_name}}
+    commands:
+      - ls -l
 
 #  push_to_ecr:
 #    provider: ecr
