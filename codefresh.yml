@@ -5,6 +5,7 @@ steps:
     type: build
     image-name: nikolai/test
     dockerfile: Dockerfile
+    working_directory: ${{main_clone}}
     tag: ${{CF_SHORT_REVISION}}
 
   check_build_step:
