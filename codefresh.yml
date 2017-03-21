@@ -5,11 +5,12 @@ steps:
     type: build
     image-name: nikolai/test
     dockerfile: Dockerfile
+    working_directory: ${{main_clone}}
     tag: ${{CF_SHORT_REVISION}}
 
   check_build_step:
     image: node:latest
-    working_directory: ${{build_step_name}}
+    working_directory: ${{main_clone}}
     commands:
       - pwd
       - ls -l
