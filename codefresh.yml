@@ -22,7 +22,8 @@ steps:
     image: 'garland/aws-cli-docker:latest'
     working_directory: IMAGE_WORK_DIR
     commands:
-      - ls -l ./
+      - pwd
+      - ls -l
 
 #  push_to_ecr:
 #    provider: ecr
