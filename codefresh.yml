@@ -20,7 +20,7 @@ steps:
 
   deploy_to_s3_test:
     image: 'garland/aws-cli-docker:latest'
-    working_directory: IMAGE_WORK_DIR
+    working_directory: ${{webpack_dev}}
     commands:
       - pwd
       - ls -l
