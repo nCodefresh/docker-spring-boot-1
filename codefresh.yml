@@ -9,8 +9,8 @@ steps:
 
   webpack_dev:
     title: Webpack build
-    image: '${{build_step_name}}'
-    working_directory: IMAGE_WORK_DIR
+    image: ${{build_step_name}}
+    working_directory: ${{build_step_name}}
     environment:
       - 'NODE_ENV=${{CF_BRANCH}}'
     commands:
