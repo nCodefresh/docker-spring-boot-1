@@ -1,5 +1,9 @@
 FROM java:8
 
+ARG archive
+
+RUN echo archive:$archive
+
 RUN apt-get update
 
 RUN apt-get install -y maven

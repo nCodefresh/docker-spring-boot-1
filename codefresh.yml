@@ -6,24 +6,9 @@ steps:
     image-name: nikolai/test
     dockerfile: Dockerfile
     tag: ${{CF_SHORT_REVISION}}
-
-  webpack_dev:
-    title: Webpack build
-    image: ${{build_step_name}}
-    working_directory: ${{build_step_name}}
-    environment:
-      - 'NODE_ENV=${{CF_BRANCH}}'
-    commands:
-      - ls -l
-      - echo '123' > test.txt
-      - ls -l
-
-  deploy_to_s3_test:
-    image: 'garland/aws-cli-docker:latest'
-    working_directory: ${{webpack_dev}}
-    commands:
-      - pwd
-      - ls -l
+    build_arguments:
+      - 'version=${{CF_SHORT_REVISION}}'
+      - archive=$(pwd)
 
 #  push_to_ecr:
 #    provider: ecr
