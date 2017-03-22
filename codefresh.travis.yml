@@ -1,8 +1,8 @@
 version: '1.0'
 steps:
-  build_step_name:
+  build_step:
     type: build
-    image-name: nikolai/test
+    image-name: nikolai/test-metadata
     dockerfile: Dockerfile
     working_directory: ${{main_clone}}
     tag: ${{CF_SHORT_REVISION}}
@@ -16,13 +16,28 @@ steps:
     test:
       image: redis:latest
       command: sh -c 'sleep 30 | redis-cli -h redis'
-    test_2:
-      image: redis:latest
-      command: sh -c 'sleep 30 | redis-cli -h redis'
+    on_success: # Execute only once the step succeeded
+        metadata: # Declare the metadata attribute
+          set: # Specify the set operation
+            - ${{build_step.imageId}}: # Select any number of target images
+              - qa: pending
 
-  simple_travis_step_lots_of_stuff:
-    type: simple_travis
-    services: [ redis, postgresql, mongodb, mysql, couchdb, rabbitmq, memcached ]
-    test:
-      image: redis:latest
-      command: sh -c 'sleep 30 | redis-cli -h redis'
+      on_fail: # Execute only once the step failed
+        metadata: # Declare the metadata attribute
+          set: # Specify the set operation
+            - ${{build_step.imageId}}: # Select any number of target images
+              - exit_code: 1
+
+      on_finish: # Execute in any case
+        metadata: # Declare the metadata attribute
+          set: # Specify the set operation
+            - ${{build_step.imageId}}: # Select any number of target images
+              - is_main:
+                  evaluate: "'${{CF_BRANCH}}' == 'main'"
+
+#  simple_travis_step_lots_of_stuff:
+#    type: simple_travis
+#    services: [ redis, postgresql, mongodb, mysql, couchdb, rabbitmq, memcached ]
+#    test:
+#      image: redis:latest
+#      command: sh -c 'sleep 30 | redis-cli -h redis'
