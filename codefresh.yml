@@ -1,19 +1,37 @@
 version: '1.0'
 steps:
+#  build_step_name:
+#    type: build
+#    image-name: nikolai/test
+#    dockerfile: Dockerfile
+#    working_directory: ${{main_clone}}
+#    tag: ${{CF_SHORT_REVISION}}
+#
+#  check_build_step:
+#    image: node:latest
+#    working_directory: ${{main_clone}}
+#    commands:
+#      - pwd
+#      - ls -l
 
-  build_step_name:
-    type: build
-    image-name: nikolai/test
-    dockerfile: Dockerfile
-    working_directory: ${{main_clone}}
-    tag: ${{CF_SHORT_REVISION}}
 
-  check_build_step:
-    image: node:latest
-    working_directory: ${{main_clone}}
-    commands:
-      - pwd
-      - ls -l
+  some_travis_step:
+    type: travis
+    services:
+      redis:
+        image: redis
+      mongo:
+        image: mongo
+      mysql:
+        image: mysql
+        ports: [ 3316, 3317 ]
+        environment:
+          - MYSQL_USERNAME: user
+          - MYSQL_PASSWORD: pass
+    test:
+      image: my_user/some_image
+      command:
+        - last_bash_command
 
 #  push_to_ecr:
 #    provider: ecr

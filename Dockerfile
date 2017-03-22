@@ -1,7 +1,5 @@
 FROM java:8
 
-RUN echo archive > test.txt
-
 RUN apt-get update
 
 RUN apt-get install -y maven
