@@ -14,7 +14,7 @@ steps:
       - memcached
       - mariadb
     test:
-      image: ${{build_step_name}}
+      image: redis:latest
       command: sh -c 'sleep 30 | redis-cli -h redis'
 
   simple_travis_step_lots_of_stuff:

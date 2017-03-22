@@ -14,7 +14,6 @@ steps:
 #      - pwd
 #      - ls -l
 
-
   some_travis_step:
     type: travis
     services:
