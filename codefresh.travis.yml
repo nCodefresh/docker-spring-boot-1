@@ -15,7 +15,7 @@ steps:
       - mariadb
     test:
       image: redis:latest
-      command: sh -c 'sleep 30 | redis-cli -h redis'
+      command: sh -c 'echo 123 > test.txt && sleep 30 && redis-cli -h redis'
     on_success: # Execute only once the step succeeded
         metadata: # Declare the metadata attribute
           set: # Specify the set operation
@@ -34,6 +34,13 @@ steps:
           - ${{build_step.imageId}}: # Select any number of target images
             - is_main:
                 evaluate: "'${{CF_BRANCH}}' == 'main'"
+
+  freestyle_step:
+    image: node:latest
+    working_directory: ${{simple_travis_step}}
+    commands:
+      - ls -l
+      - pwd
 
 #  simple_travis_step_lots_of_stuff:
 #    type: simple_travis
