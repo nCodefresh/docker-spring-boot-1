@@ -3,7 +3,7 @@ steps:
   build_image:
       type: build
       title: Building Docker Image
-      image_name: sfmoma/sfmoma
+      image_name: ncodefresh/maven-build
 #
 #  check_build_step:
 #    image: node:latest
@@ -81,24 +81,24 @@ steps:
 #      - echo TEST:${{TEST}}
 #      - echo TEST1:${{TEST1}}
 #
-#  composition_step:
-#    type: composition
-#    title: Step Title
-#    description: Free text description
-#    working_directory: ${{main_clone}}
-#    composition:
-#      version: '2'
-#      services:
-#        postgres:
-#          restart: always
-#          image: 'postgres:latest'
-#          ports:
-#            - 5432
-#          environment:
-#            - POSTGRES_DB=videoplatform
-#    composition_candidates:
-#      test_service:
-#        image: node:latest
-#        command: echo TEST:${{TEST}}
-#    composition_variables:
-#      - key=value
+  composition_step:
+    type: composition
+    title: Step Title
+    description: Free text description
+    working_directory: ${{main_clone}}
+    composition:
+      version: '2'
+      services:
+        postgres:
+          restart: always
+          image: 'postgres:latest'
+          ports:
+            - 5432
+          environment:
+            - POSTGRES_DB=videoplatform
+    composition_candidates:
+      test_service:
+        image: node:latest
+        command: echo TEST:${{TEST}}
+    composition_variables:
+      - key=value
