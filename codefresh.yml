@@ -1,12 +1,9 @@
 version: '1.0'
 steps:
-  build_step_name:
-    type: build
-    image-name: nikolai/test
-    dockerfile: Dockerfile.test
-    working_directory: ${{main_clone}}
-    tag: ${{CF_SHORT_REVISION}}
-    no_cache: true
+  build_image:
+      type: build
+      title: Building Docker Image
+      image_name: sfmoma/sfmoma
 #
 #  check_build_step:
 #    image: node:latest

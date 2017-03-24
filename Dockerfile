@@ -1,4 +1,4 @@
-FROM java:8
+FROM buildpack-deps:xenial
 
 RUN apt-get update
 
