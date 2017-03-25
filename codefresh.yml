@@ -5,7 +5,6 @@ steps:
     title: Building Docker Image
     image_name: ncodefresh/maven-build
     dockerfile: Dockerfile
-    no_cache: true
 #
 #  check_build_step:
 #    image: node:latest
