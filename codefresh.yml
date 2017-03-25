@@ -4,7 +4,7 @@ steps:
     type: build
     title: Building Docker Image
     image_name: ncodefresh/android-sdk
-    dockerfile: Dockerfile.android
+    dockerfile: Dockerfile
 #
 #  check_build_step:
 #    image: node:latest
