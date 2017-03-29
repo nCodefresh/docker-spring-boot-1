@@ -10,7 +10,7 @@ ADD pom.xml /code/pom.xml
 
 ADD log.sh /code/log.sh
 
-RUN sh ./log.sh
+#RUN sh ./log.sh
 
 ADD src /code/src
 
@@ -20,4 +20,4 @@ VOLUME /tmp
 
 EXPOSE 8080
 
-#CMD ["java","-Djava.security.egd=file:/dev/./urandom","-jar","target/spring-boot-docker-0.0.1.jar"]
+CMD ["java","-Djava.security.egd=file:/dev/./urandom","-jar","target/spring-boot-docker-0.0.1.jar"]
