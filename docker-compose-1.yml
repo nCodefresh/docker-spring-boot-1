@@ -38,6 +38,9 @@ services:
   test-service-1:
       build: .
 
+  test-service-2:
+      build: .
+
   redis:
     image: redis:alpine
     container_name: redis
