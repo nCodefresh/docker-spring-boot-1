@@ -5,7 +5,7 @@ steps:
     title: Building Docker Image
     image_name: ncodefresh/maven-build
     dockerfile: Dockerfile
-    tag: ${{CF_SHORT_REVISIONa}}
+    tag:
 
 #
 #  check_build_step:
