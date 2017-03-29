@@ -6,6 +6,7 @@ steps:
     image_name: ncodefresh/maven-build
     dockerfile: Dockerfile
     tag: ${{CF_SHORT_REVISION}}
+
 #
 #  check_build_step:
 #    image: node:latest
