@@ -29,7 +29,6 @@ services:
     networks:
       - back-tier
 
-
   test-service-1:
     build: .
 
