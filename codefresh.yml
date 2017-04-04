@@ -7,7 +7,6 @@ steps:
     dockerfile: Dockerfile
     tag: ${{TEST_IMAGE}}
 
-
 #
 #  check_build_step:
 #    image: node:latest
