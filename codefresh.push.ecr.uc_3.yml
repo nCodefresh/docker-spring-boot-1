@@ -14,18 +14,20 @@ steps:
     type: push
     description: Free text description
     candidate: ${{build_step}}
-    tag: UC3
+    tag: ecr
     provider: 'ecr'
     registry: ${{AWS_REGISTRY}}
     accessKeyId: ${{AWS_ACCESS_KEY}}
     secretAccessKey: ${{AWS_SECRET_KEY}}
     region: ${{AWS_REGION}}
+    fail_fast: false
 
   push_to_dockerhub:
     type: push
     description: Free text description
     candidate: ${{build_step}}
-    tag: UC3
+    tag: dockerhub
+    fail_fast: false
     credentials:
       username: ${{DOCKERHUB_USER}}
       password: ${{DOCKERHUB_PWD}}
@@ -34,12 +36,14 @@ steps:
     type: push
     description: Free text description
     candidate: ${{build_step}}
-    tag: UC3
+    tag: registry1
+    fail_fast: false
     registry: ${{REGISTRY_1}}
 
   push_to_registry2:
     type: push
     description: Free text description
     candidate: ${{build_step}}
-    tag: UC3
+    tag: registry2
+    fail_fast: false
     registry: ${{REGISTRY_2}}
