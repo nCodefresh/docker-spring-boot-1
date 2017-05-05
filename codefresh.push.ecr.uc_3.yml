@@ -21,7 +21,7 @@ steps:
     secretAccessKey: ${{AWS_SECRET_KEY}}
     region: ${{AWS_REGION}}
 
-  push_to_aws_ecr:
+  push_to_dockerhub:
     type: push
     description: Free text description
     candidate: ${{build_step}}
@@ -30,14 +30,14 @@ steps:
       username: ${{DOCKERHUB_USER}}
       password: ${{DOCKERHUB_PWD}}
 
-  push_to_ecr1:
+  push_to_registry1:
     type: push
     description: Free text description
     candidate: ${{build_step}}
     tag: UC3
     registry: ${{REGISTRY_1}}
 
-  push_to_ecr2:
+  push_to_registry2:
     type: push
     description: Free text description
     candidate: ${{build_step}}
