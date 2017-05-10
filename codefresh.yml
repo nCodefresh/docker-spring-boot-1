@@ -7,11 +7,13 @@ steps:
     dockerfile: Dockerfile
     tag: 'volumes-image'
 
-  check_build_step:
-    image: nCodefresh_docker-spring-boot-1/docker-spring-boot-1:volume
-    commands:
-      - pwd
-      - ls -l
+
+
+#  check_build_step:
+#    image: nCodefresh_docker-spring-boot-1/docker-spring-boot-1:volume
+#    commands:
+#      - pwd
+#      - ls -l
 #
 #  some_travis_step:
 #    type: travis
