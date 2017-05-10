@@ -10,6 +10,7 @@ steps:
     dockerfile: Dockerfile
     tag: latest
 
+
 #  push_to_aws_ecr:
 #    type: push
 #    description: Free text description
