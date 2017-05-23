@@ -8,7 +8,7 @@ RUN ls -l
 
 WORKDIR /code
 
-COPY test-folder/ /code
+COPY test-folder /code
 
 ADD pom.xml /code/pom.xml
 
