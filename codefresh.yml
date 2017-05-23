@@ -13,6 +13,7 @@ steps:
             noSkipCiInCommitMessage: |
               includes(lower("${{CF_COMMIT_MESSAGE}}"), "--skip-ci") == false
 
+
 #  push-to-dockerhub:
 #    type: push
 #    candidate: ${{build-step-name}}
