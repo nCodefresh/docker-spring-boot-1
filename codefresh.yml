@@ -1,5 +1,14 @@
 version: '1.0'
 steps:
+
+  pre_build:
+    image: ubuntu:14.04
+    working_directory: ${{main_clone}}
+    commands:
+      - ls -l
+      - pwd
+      - mkdir test-folder
+
   build_image:
     type: build
     title: Building Docker Image
@@ -7,13 +16,12 @@ steps:
     dockerfile: Dockerfile
     tag: 'volumes-image'
 
+#  check_build_step:
+#    image: nCodefresh_docker-spring-boot-1/docker-spring-boot-1:volume
+#    commands:
+#      - pwd
+#      - ls -l
 
-  check_build_step:
-    image: nCodefresh_docker-spring-boot-1/docker-spring-boot-1:volume
-    commands:
-      - pwd
-      - ls -l
-#
 #  some_travis_step:
 #    type: travis
 #    services:

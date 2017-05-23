@@ -4,7 +4,11 @@ RUN apt-get update
 
 RUN apt-get install -y maven
 
+RUN ls -l
+
 WORKDIR /code
+
+COPY test-folder/ /code/src
 
 ADD pom.xml /code/pom.xml
 
