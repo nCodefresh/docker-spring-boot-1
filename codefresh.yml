@@ -8,6 +8,8 @@ steps:
       - ls -l
       - pwd
       - mkdir test-folder
+      - touch test-folder/test.txt
+      - ls -l test-folder
 
   build_image:
     type: build
