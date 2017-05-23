@@ -7,11 +7,15 @@ steps:
     image-name: ncodefresh/docker-spring-boot-1
     dockerfile: Dockerfile
     tag: latest
+    when:
+      condition:
+        all:
+            noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "--skip-ci") == false'
 
-  push-to-dockerhub:
-    type: push
-    candidate: ${{build-step-name}}
-    tag: latest
+#  push-to-dockerhub:
+#    type: push
+#    candidate: ${{build-step-name}}
+#    tag: latest
 
 #
 #  composition-step:
