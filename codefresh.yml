@@ -10,7 +10,8 @@ steps:
     when:
       condition:
         all:
-            noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "--skip-ci") == false'
+            noSkipCiInCommitMessage: |
+              includes(lower("${{CF_COMMIT_MESSAGE}}"), "--skip-ci") == false
 
 #  push-to-dockerhub:
 #    type: push
