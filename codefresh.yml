@@ -5,11 +5,10 @@ steps:
     image: ubuntu:14.04
     working_directory: ${{main_clone}}
     commands:
-      - ls -l
       - pwd
       - mkdir test-folder
       - touch test-folder/test.txt
-      - ls -l test-folder
+      - ls -l
 
   build_image:
     type: build
