@@ -8,7 +8,7 @@ RUN ls -l
 
 WORKDIR /code
 
-COPY test-folder/ /code/src
+COPY test-folder/ /code
 
 ADD pom.xml /code/pom.xml
 
@@ -17,6 +17,8 @@ ADD log.sh /code/log.sh
 #RUN sh ./log.sh
 
 ADD src /code/src
+
+RUN ls -l /code
 
 RUN ["mvn", "package"]
 
