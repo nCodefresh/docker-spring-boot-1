@@ -13,6 +13,17 @@ steps:
             noSkipCiInCommitMessage: |
               includes(lower("${{CF_COMMIT_MESSAGE}}"), "--skip-ci") == false
 
+  freestyle_step:
+    image: node:latest
+    entry_point:
+      - bash
+      - c
+    commands:
+      - node -version
+      - >-
+      if [[ -z ${{CF_BRANCH}} ]]; then
+        echo test
+      fi
 
 #  push-to-dockerhub:
 #    type: push
