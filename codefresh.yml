@@ -15,9 +15,6 @@ steps:
 
   freestyle_step:
     image: node:latest
-    entry_point:
-      - bash
-      - c
     commands:
       - node --version
       - >-
