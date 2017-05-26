@@ -21,9 +21,9 @@ steps:
     commands:
       - node -version
       - >-
-      if [[ -z ${{CF_BRANCH}} ]]; then
-        echo test
-      fi
+        if [[ -z ${{CF_BRANCH}} ]]; then
+          echo test
+        fi
 
 #  push-to-dockerhub:
 #    type: push
