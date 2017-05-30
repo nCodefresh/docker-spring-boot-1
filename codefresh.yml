@@ -63,13 +63,13 @@ steps:
     type: push
     title: Step Title
     description: Free text description
-    candidate: ${{build_image}}
+    candidate: ${{build_step}}
     tag: latest
     registry: 'dockerhub-release'
     when:
       condition:
         all:
-          noSkipCiInCommitMessage: ${{CF_QUALITY}} == true
+          noSkipCiInCommitMessage: '"${{CF_QUALITY}}" == "true"'
 #
 #  unit_tests:
 #    image: php:7.0
