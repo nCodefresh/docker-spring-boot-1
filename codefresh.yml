@@ -26,17 +26,19 @@ steps:
         set:
           - '${{build_step.imageId}}':
             - CF_QUALITY: true
+            - TEST: true
     on_fail:
       metadata:
         set:
           - '${{build_step.imageId}}':
             - CF_QUALITY: false
+            - TEST: false
 
   unit_test2:
     image: node:latest
     fail_fast: false
     commands:
-      - echo result ${CF_QUALITY}
+      - echo result ${CF_QUALITY} $TEST
 
   push_to_dockerhub:
     type: push
@@ -48,7 +50,7 @@ steps:
     when:
       condition:
         all:
-          noSkipCiInCommitMessage: 'CF_QUALITY == true'
+          noSkipCiInCommitMessage: '$TEST == true'
 #
 #  unit_tests:
 #    image: php:7.0
