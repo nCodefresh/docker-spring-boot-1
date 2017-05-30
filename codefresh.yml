@@ -10,18 +10,25 @@ steps:
 #      - touch test-folder/test.txt
 #      - ls -l
 
-  build_image:
+  build_step:
     type: build
     title: Building Docker Image
     image_name: ncodefresh/docker-spring-boot
     dockerfile: Dockerfile
-    tag: 'volumes-image1'
 
-#  check_build_step:
-#    image: nCodefresh_docker-spring-boot-1/docker-spring-boot-1:volume
-#    commands:
-#      - pwd
-#      - ls -l
+  unit_test:
+    image: node:latest
+    fail_fast: false
+    commands:
+      - test1.sh
+    on_success:
+      metadata:
+        set:
+          - CF_QUALITY: true
+    on_fail:
+      metadata:
+        set:
+          - CF_QUALITY: false
 
 #  some_travis_step:
 #    type: travis
@@ -55,12 +62,12 @@ steps:
     title: Step Title
     description: Free text description
     candidate: ${{build_image}}
-    tag: 'volumes-image1'
+    tag: latest
     registry: 'dockerhub-release'
     when:
-      branch:
-        only:
-          - master
+      condition:
+        all:
+          unit-test: '${{CF_QUALITY}} == true'
 #
 #  unit_tests:
 #    image: php:7.0
