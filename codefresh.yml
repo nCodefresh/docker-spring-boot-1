@@ -24,13 +24,11 @@ steps:
     on_success:
       metadata:
         set:
-          - '${{build_step.imageId}}':
-            - CF_QUALITY: true
+          - CF_QUALITY: true
     on_fail:
       metadata:
         set:
-          - '${{build_step.imageId}}':
-            - CF_QUALITY: false
+          - CF_QUALITY: false
 
 #  some_travis_step:
 #    type: travis
