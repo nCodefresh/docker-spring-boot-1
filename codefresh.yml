@@ -22,9 +22,15 @@ steps:
     commands:
       - echo test1
     on_success:
-      - CF_QUALITY: true
+      metadata:
+        set:
+          - '${{build_step.imageId}}':
+            - CF_QUALITY: true
     on_fail:
-      - CF_QUALITY: false
+      metadata:
+        set:
+          - '${{build_step.imageId}}':
+            - CF_QUALITY: false
 
   unit_test2:
     image: node:latest
