@@ -22,13 +22,9 @@ steps:
     commands:
       - echo test1
     on_success:
-      metadata:
-        set:
-          - CF_QUALITY: true
+      - CF_QUALITY: true
     on_fail:
-      metadata:
-        set:
-          - CF_QUALITY: false
+      - CF_QUALITY: false
 
 #  some_travis_step:
 #    type: travis
