@@ -1,21 +1,21 @@
 version: '1.0'
 steps:
 
-  pre_build:
-    image: ubuntu:14.04
-    working_directory: ${{main_clone}}
-    commands:
-      - pwd
-      - mkdir test-folder
-      - touch test-folder/test.txt
-      - ls -l
+#  pre_build:
+#    image: ubuntu:14.04
+#    working_directory: ${{main_clone}}
+#    commands:
+#      - pwd
+#      - mkdir test-folder
+#      - touch test-folder/test.txt
+#      - ls -l
 
   build_image:
     type: build
     title: Building Docker Image
     image_name: ncodefresh/docker-spring-boot
     dockerfile: Dockerfile
-    tag: 'volumes-image'
+    tag: 'volumes-image1'
 
 #  check_build_step:
 #    image: nCodefresh_docker-spring-boot-1/docker-spring-boot-1:volume
@@ -50,19 +50,17 @@ steps:
 #    secretAccessKey: '${{CODEFRESH_SECRET_ACCESS_KEY}}'
 #    tag: '${{CF_SHORT_REVISION}}'
 
-#  push_to_dockerhub:
-#    type: push
-#    title: Step Title
-#    description: Free text description
-#    candidate: ${{build_step_name}}
-#    tag: latest
-#    credentials:
-#      username: ${{DOCKER_USERNAME}}
-#      password: ${{DOCKER_PASSWORD}}
-#    when:
-#      branch:
-#        only:
-#          - master
+  push_to_dockerhub:
+    type: push
+    title: Step Title
+    description: Free text description
+    candidate: ${{build_image}}
+    tag: 'volumes-image1'
+    registry: 'dockerhub-release'
+    when:
+      branch:
+        only:
+          - master
 #
 #  unit_tests:
 #    image: php:7.0
