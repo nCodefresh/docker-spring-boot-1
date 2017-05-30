@@ -24,12 +24,14 @@ steps:
     on_success:
       metadata:
         set:
+          - TEST: true
           - '${{build_step.imageId}}':
             - CF_QUALITY: true
             - TEST: true
     on_fail:
       metadata:
         set:
+          - TEST: false
           - '${{build_step.imageId}}':
             - CF_QUALITY: false
             - TEST: false
@@ -50,7 +52,7 @@ steps:
     when:
       condition:
         all:
-          noSkipCiInCommitMessage: '$TEST == true'
+          noSkipCiInCommitMessage: '${{TEST}} == true'
 #
 #  unit_tests:
 #    image: php:7.0
