@@ -8,8 +8,6 @@ RUN ls -l
 
 WORKDIR /code
 
-COPY test-folder /code
-
 ADD pom.xml /code/pom.xml
 
 ADD log.sh /code/log.sh
