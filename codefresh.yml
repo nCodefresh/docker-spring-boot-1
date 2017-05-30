@@ -69,7 +69,7 @@ steps:
     when:
       condition:
         all:
-          unit-test: '${{CF_QUALITY}} == true'
+          noSkipCiInCommitMessage: ${{CF_QUALITY}} == true
 #
 #  unit_tests:
 #    image: php:7.0
