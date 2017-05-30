@@ -36,7 +36,7 @@ steps:
     image: node:latest
     fail_fast: false
     commands:
-      - echo result $CF_QUALITY
+      - echo result ${CF_QUALITY}
 
   push_to_dockerhub:
     type: push
@@ -48,7 +48,7 @@ steps:
     when:
       condition:
         all:
-          noSkipCiInCommitMessage: '${{CF_QUALITY}} == "true"'
+          noSkipCiInCommitMessage: 'CF_QUALITY == true'
 #
 #  unit_tests:
 #    image: php:7.0
