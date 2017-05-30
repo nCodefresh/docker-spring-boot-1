@@ -20,7 +20,7 @@ steps:
     image: node:latest
     fail_fast: false
     commands:
-      - test1.sh
+      - echo test1
     on_success:
       metadata:
         set:
