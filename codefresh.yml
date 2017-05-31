@@ -28,6 +28,17 @@ steps:
         only:
           - master
 
+#  DeployDev:
+#    title: Deploy DEV
+#    image: klickinc/aws-cli-docker:latest
+#    working_directory: ${{main_clone}}
+#    commands:
+#      - echo test
+#    when:
+#      branch:
+#        only:
+#          - master
+
 #  unit_test:
 #    image: node:latest
 #    fail_fast: false
