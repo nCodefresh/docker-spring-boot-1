@@ -14,45 +14,40 @@ steps:
     type: build
     title: Building Docker Image
     image_name: ncodefresh/docker-spring-boot
+    working_directory: ${{main_clone}}
     dockerfile: Dockerfile
 
-  unit_test:
-    image: node:latest
-    fail_fast: false
+  DeployDev:
+    title: Deploy DEV
+    image: klickinc/aws-cli-docker:latest
+    working_directory: ${{main_clone}}
     commands:
-      - echo test1
-    on_success:
-      metadata:
-        set:
-          - TEST: true
-          - '${{build_step.imageId}}':
-            - CF_QUALITY: true
-            - TEST: true
-    on_fail:
-      metadata:
-        set:
-          - TEST: false
-          - '${{build_step.imageId}}':
-            - CF_QUALITY: false
-            - TEST: false
+      - echo test
 
-  unit_test2:
-    image: node:latest
-    fail_fast: false
-    commands:
-      - echo result ${CF_QUALITY} $TEST
-
-  push_to_dockerhub:
-    type: push
-    title: Step Title
-    description: Free text description
-    candidate: ${{build_step}}
-    tag: latest
-    registry: 'dockerhub-release'
-    when:
-      condition:
-        all:
-          noSkipCiInCommitMessage: '${{TEST}} == true'
+#  unit_test:
+#    image: node:latest
+#    fail_fast: false
+#    commands:
+#      - echo test1
+#      - touch file.txt
+#
+#  unit_test2:
+#    image: node:latest
+#    fail_fast: false
+#    commands:
+#      - echo result $TEST
+#
+#  push_to_dockerhub:
+#    type: push
+#    title: Step Title
+#    description: Free text description
+#    candidate: ${{build_step}}
+#    tag: latest
+#    registry: 'dockerhub-release'
+#    when:
+#      condition:
+#        all:
+#          noSkipCiInCommitMessage: '${{TEST}} == true'
 #
 #  unit_tests:
 #    image: php:7.0
