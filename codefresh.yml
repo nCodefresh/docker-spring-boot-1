@@ -23,6 +23,10 @@ steps:
     working_directory: ${{main_clone}}
     commands:
       - echo test
+    when:
+      branch:
+        only:
+          - master
 
 #  unit_test:
 #    image: node:latest
