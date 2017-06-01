@@ -12,7 +12,8 @@ steps:
   slack_notify:
     image: tutum/curl
     commands:
-      - curl -X POST --data-urlencode 'payload={"text":"New RF-images pushed with tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}-${{CF_BUILD_TIMESTAMP}}"}' ${{SLACK_WEB_URL}}
+      - >-
+        curl -X POST --data-urlencode 'payload={"text":"New RF-images pushed with tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}-${{CF_BUILD_TIMESTAMP}}"}' ${{SLACK_WEB_URL}}
 #
 #  build_step:
 #    type: build
