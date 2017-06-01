@@ -9,18 +9,18 @@ steps:
 #      - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY_ID}}
 #      - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
 #      - AWS_DEFAULT_REGION=${{AWS_DEFAULT_REGION}}
-  slack_notify:
-    image: tutum/curl
-    commands:
-      - >-
-        curl -X POST --data-urlencode 'payload={"text":"New RF-images pushed with tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}-${{CF_BUILD_TIMESTAMP}}"}' ${{SLACK_WEB_URL}}
+#  slack_notify:
+#    image: tutum/curl
+#    commands:
+#      - >-
+#        curl -X POST --data-urlencode 'payload={"text":"New RF-images pushed with tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}-${{CF_BUILD_TIMESTAMP}}"}' ${{SLACK_WEB_URL}}
 #
-#  build_step:
-#    type: build
-#    title: Building Docker Image
-#    image_name: ncodefresh/docker-spring-boot
-#    working_directory: ${{main_clone}}
-#    dockerfile: Dockerfile
+  build_step:
+    type: build
+    title: Building Docker Image
+    image_name: ncodefresh/docker-spring-boot
+    working_directory: ${{main_clone}}
+    dockerfile: Dockerfile
 #
 #  DeployDev:
 #    title: Deploy DEV
@@ -77,14 +77,13 @@ steps:
 #      - echo TEST1:${{TEST1}}
 #      - echo TEST2:${{TEST2}}
 
-#  push_to_step:
-#    title: Push to Quay.io
-#    type: push
-#    candidate: ${{build_step}}
-#    registry: quay.io
-#    credentials:
-#      username: ${{USERNAME}}
-#      password: ${{TOKEN}}
+  push_to_step:
+    title: Push to Dockerhub
+    type: push
+    candidate: ${{build_step}}
+    credentials:
+      username: ${{USERNAME}}
+      password: ${{TOKEN}}
 #  step_name:
 #    type: push
 #    title: Step Title
