@@ -1,14 +1,14 @@
 version: '1.0'
 steps:
 
-#  pre_build:
-#    image: ubuntu:14.04
-#    working_directory: ${{main_clone}}
-#    commands:
-#      - pwd
-#      - mkdir test-folder
-#      - touch test-folder/test.txt
-#      - ls -l
+  pre_deploy:
+    image: garland/aws-cli-docker
+    commands:
+      - aws ecs help # your command to stop task
+    environment:
+      - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY_ID}}
+      - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
+      - AWS_DEFAULT_REGION=${{AWS_DEFAULT_REGION}}
 
   build_step:
     type: build
