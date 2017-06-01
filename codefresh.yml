@@ -4,7 +4,7 @@ steps:
   pre_deploy:
     image: garland/aws-cli-docker
     commands:
-      - aws ecs help # your command to stop task
+      - aws --version # your command to stop task
     environment:
       - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY_ID}}
       - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
