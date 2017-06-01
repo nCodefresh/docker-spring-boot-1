@@ -22,11 +22,7 @@ steps:
     image: klickinc/aws-cli-docker:latest
     working_directory: ${{main_clone}}
     commands:
-      - echo test
-    when:
-      branch:
-        only:
-          - master
+      - echo $CF_REVISION
 
 #  DeployDev:
 #    title: Deploy DEV
