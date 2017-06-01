@@ -1,28 +1,32 @@
 version: '1.0'
 steps:
 
-  pre_deploy:
-    image: garland/aws-cli-docker
+#  pre_deploy:
+#    image: garland/aws-cli-docker
+#    commands:
+#      - aws --version # your command to stop task
+#    environment:
+#      - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY_ID}}
+#      - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
+#      - AWS_DEFAULT_REGION=${{AWS_DEFAULT_REGION}}
+  slack_notify:
+    image: tutum/curl
     commands:
-      - aws --version # your command to stop task
-    environment:
-      - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY_ID}}
-      - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
-      - AWS_DEFAULT_REGION=${{AWS_DEFAULT_REGION}}
-
-  build_step:
-    type: build
-    title: Building Docker Image
-    image_name: ncodefresh/docker-spring-boot
-    working_directory: ${{main_clone}}
-    dockerfile: Dockerfile
-
-  DeployDev:
-    title: Deploy DEV
-    image: klickinc/aws-cli-docker:latest
-    working_directory: ${{main_clone}}
-    commands:
-      - echo $CF_REVISION
+      - curl -X POST --data-urlencode 'payload={"text":"New RF-images pushed with tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}-${{CF_BUILD_TIMESTAMP}}"}' ${{SLACK_WEB_URL}}
+#
+#  build_step:
+#    type: build
+#    title: Building Docker Image
+#    image_name: ncodefresh/docker-spring-boot
+#    working_directory: ${{main_clone}}
+#    dockerfile: Dockerfile
+#
+#  DeployDev:
+#    title: Deploy DEV
+#    image: klickinc/aws-cli-docker:latest
+#    working_directory: ${{main_clone}}
+#    commands:
+#      - echo $CF_REVISION
 
 #  DeployDev:
 #    title: Deploy DEV
