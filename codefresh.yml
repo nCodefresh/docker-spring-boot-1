@@ -16,7 +16,6 @@ steps:
 #        curl -X POST --data-urlencode 'payload={"text":"New RF-images pushed with tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}-${{CF_BUILD_TIMESTAMP}}"}' ${{SLACK_WEB_URL}}
 #
 
-
   build_step:
     type: build
     title: Building Docker Image
@@ -27,8 +26,7 @@ steps:
       condition:
         all:
           skip_tests_in_commit_message: |
-            includes(lower('${{CF_COMMIT_MESSAGE}}'), 'cf-skip-tests') == false
-          skip_tests_variable: lower('${{CF_SKIP_TESTS}}') != 'true'
+            includes(lower("${{CF_COMMIT_MESSAGE}}"), "cf-skip-tests") == false
 #
 #  DeployDev:
 #    title: Deploy DEV
