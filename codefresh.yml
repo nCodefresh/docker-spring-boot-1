@@ -21,6 +21,12 @@ steps:
     image_name: ncodefresh/docker-spring-boot
     working_directory: ${{main_clone}}
     dockerfile: Dockerfile
+    when:
+      condition:
+        all:
+          skip_tests_in_commit_message: |
+            includes(lower('${{CF_COMMIT_MESSAGE}}'), 'cf-skip-tests') == false
+          skip_tests_variable: lower('${{CF_SKIP_TESTS}}') != 'true'
 #
 #  DeployDev:
 #    title: Deploy DEV
@@ -77,13 +83,15 @@ steps:
 #      - echo TEST1:${{TEST1}}
 #      - echo TEST2:${{TEST2}}
 
-  push_to_step:
-    title: Push to Dockerhub
-    type: push
-    candidate: ${{build_step}}
-    credentials:
-      username: ${{USERNAME}}
-      password: ${{TOKEN}}
+#  push_to_step:
+#    title: Push to Dockerhub
+#    type: push
+#    candidate: ${{build_step}}
+#    registry: gcr.io
+#    credentials:
+#      username: ${{USERNAME}}
+#      password: ${{TOKEN}}
+
 #  step_name:
 #    type: push
 #    title: Step Title
