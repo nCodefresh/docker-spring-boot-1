@@ -1,0 +1,6 @@
+FROM alpine
+
+COPY /scripts ./scripts
+RUN chmod +x /scripts/deploy/test-script.sh
+
+CMD ["bash"]
