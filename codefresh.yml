@@ -7,6 +7,8 @@ steps:
     working_directory: ${{main_clone}}
     dockerfile: Dockerfile
 
+
+
   deploy:
     image: ncodefresh/testscript
     working_directory: ${{main_clone}}
