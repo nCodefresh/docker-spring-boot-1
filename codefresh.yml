@@ -8,6 +8,11 @@ steps:
     dockerfile: Dockerfile
 
 
+  check_for_imageid:
+    image: codefreshio/git-image:latest
+    working_directory: ${{main_clone}}
+    commands:
+      - bash -c "echo ${{build_step.imageId}}"
 
   deploy:
     image: ncodefresh/testscript
