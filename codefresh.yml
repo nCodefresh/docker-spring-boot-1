@@ -7,18 +7,11 @@ steps:
     working_directory: ${{main_clone}}
     dockerfile: Dockerfile
 
-
-  check_for_imageid:
-    image: node:latest
-    working_directory: ${{main_clone}}
-    commands:
-      - echo ${{build_step.imageId}}
-
-  deploy:
-    image: ncodefresh/testscript
-    working_directory: ${{main_clone}}
-    commands:
-      - pwd
-      - ls -l
-      - cat /scripts/deploy/test-script.sh
-      - /scripts/deploy/test-script.sh log.sh
+#  deploy:
+#    image: ncodefresh/testscript
+#    working_directory: ${{main_clone}}
+#    commands:
+#      - pwd
+#      - ls -l
+#      - cat /scripts/deploy/test-script.sh
+#      - /scripts/deploy/test-script.sh log.sh
