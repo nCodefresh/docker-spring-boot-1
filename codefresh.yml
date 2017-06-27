@@ -13,9 +13,21 @@ steps:
     working_directory: ${{main_clone}}
     dockerfile: Dockerfile.test
 
-  push_step:
-    type: push
-    title: Test of CFCR
+#  push_step:
+#    type: push
+#    title: Test of CFCR
+#    candidate: ${{build_step}}
+#    registry: cfcr
+#    tag: latest
+
+  push_step_2:
+    type: push with creds
+    title: Step Title
     candidate: ${{build_step}}
-    registry: cfcr
     tag: latest
+    image_name: ncodefresh/dockerspring-push-creds
+    tag: push-creds
+    registry: staging.cfcr.io
+    credentials:
+      username: ${{user}}
+      password: ${{pwd}}
