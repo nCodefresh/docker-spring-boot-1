@@ -21,10 +21,9 @@ steps:
 #    tag: latest
 
   push_step_2:
-    type: push with creds
-    title: Step Title
+    type: push
+    title: Push with creds
     candidate: ${{build_step}}
-    tag: latest
     image_name: ncodefresh/dockerspring-push-creds
     tag: push-creds
     registry: staging.cfcr.io
