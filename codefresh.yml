@@ -1,17 +1,21 @@
 version: '1.0'
 steps:
+  freestyle_step:
+    image: staging.cfcr.io/ncodefresh/dockerspringboot:master
+    commands:
+      - pwd
+      - echo test
+
   build_step:
     type: build
     title: Building Docker Image
     image_name: ncodefresh/docker-spring-boot
     working_directory: ${{main_clone}}
-    dockerfile: Dockerfile
+    dockerfile: Dockerfile.test
 
-#  deploy:
-#    image: ncodefresh/testscript
-#    working_directory: ${{main_clone}}
-#    commands:
-#      - pwd
-#      - ls -l
-#      - cat /scripts/deploy/test-script.sh
-#      - /scripts/deploy/test-script.sh log.sh
+  push_step:
+    type: push
+    title: Test of CFCR
+    candidate: ${{build_step}}
+    registry: cfcr
+    tag: latest
