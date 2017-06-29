@@ -1,7 +1,7 @@
 version: '2'
 services:
   test-image:
-    image: ncodefresh/docker-spring-boot:master
+    image: ${{build_step}}
     command: sh ./log.sh
     volumes:
-      - ./log.sh:code/log.sh
+      - ./log.sh:/code/log.sh
