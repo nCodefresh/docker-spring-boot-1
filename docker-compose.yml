@@ -1,7 +1,7 @@
 version: '2'
 services:
   test-image:
-    image: ${{build_step}}
+    image: ncodefresh/docker-spring-boot:master
     command: bash -c "ls -a /code && echo folder######### && ls -a"
     volumes:
       - ./log.sh:/code
