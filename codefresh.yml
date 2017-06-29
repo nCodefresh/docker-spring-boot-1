@@ -11,7 +11,9 @@ steps:
   push_step:
     type: push
     candidate: ${{build_step}}
-    registry: dockerhub-release
+    credentials:
+      username: ${{user}}
+      password: ${{pass}}
     tag: master
 
   launch_step:
