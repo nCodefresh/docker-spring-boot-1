@@ -2,6 +2,4 @@ version: '2'
 services:
   test-image:
     image: ncodefresh/docker-spring-boot:master
-    command: bash -c "ls -a /code && echo folder######### && ls -a"
-    volumes:
-      - ./log.sh:/code
+    command: bash -c "pwd && ls -a /code && echo folder######### && ls -a"
