@@ -1,51 +1,21 @@
 version: '1.0'
 steps:
-#  freestyle_step:
-#    image: staging.cfcr.io/ncodefresh/dockerspringboot:master
-#    commands:
-#      - pwd
-#      - echo test
-
   build_step:
     type: build
     title: Building Docker Image
     image_name: ncodefresh/docker-spring-boot
     working_directory: ${{main_clone}}
     dockerfile: Dockerfile
-    tag: ${{CF_BRANCH_VERSION_NORMALIZED}}
+    tag: master
 
-#  push_step:
-#    type: push
-#    title: Test of CFCR
-#    candidate: ${{build_step}}
-#    registry: cfcr
-#    tag: latest
+  push_step:
+    type: push
+    candidate: ${{build_step}}
+    registry: dockerhub-release
+    tag: master
 
-#  push_step_2:
-#    type: push
-#    title: Push with creds
-#    candidate: ${{build_step}}
-#    image_name: ncodefresh/dockerspring-push-creds
-#    tag: push-creds
-#    registry: staging.cfcr.io
-#    credentials:
-#      username: ${{user}}
-#      password: ${{pwd}}
-
-#  composition_step:
-#    type: composition
-#    composition:
-#      version: '2'
-#      services:
-#        my-service:
-#          image: ${{build_step}}
-#          ports:
-#            - '1337'
-#        test-service1:
-#          image: staging.cfcr.io/ncodefresh/docker-spring-boot:latest
-#          command: echo test1
-#    composition_candidates:
-#        test_service2:
-#          image: staging.cfcr.io/ncodefresh/docker-spring-boot:latest
-#          command: echo test2
-#    fail_fast: false
+  launch_step:
+    title: Step Title
+    type: launch-composition
+    composition: ./docker-compose.yml
+    environment_name: 'test'
