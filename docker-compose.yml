@@ -3,3 +3,5 @@ services:
   test-image:
     image: ncodefresh/docker-spring-boot:master
     command: sh ./log.sh
+    volumes:
+      - ./log.sh:code/log.sh
