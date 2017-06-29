@@ -4,4 +4,4 @@ services:
     image: ${{build_step}}
     command: sh ./log.sh
     volumes:
-      - ./log.sh:/code/log.sh
+      - ./log.sh:/code
