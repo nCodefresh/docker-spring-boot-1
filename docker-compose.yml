@@ -2,6 +2,6 @@ version: '2'
 services:
   test-image:
     image: ${{build_step}}
-    command: sh ./log.sh
+    command: bash -c "ls -a /code && echo folder######### && ls -a"
     volumes:
       - ./log.sh:/code
