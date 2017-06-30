@@ -11,6 +11,7 @@ steps:
   push_step:
     type: push
     candidate: ${{build_step}}
+    registry: staging.cfcr.io
     credentials:
       username: ${{user}}
       password: ${{pass}}
