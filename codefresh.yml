@@ -8,13 +8,13 @@ steps:
     dockerfile: Dockerfile
     tag: master
 
-#  push_step:
-#    type: push
-#    candidate: ${{build_step}}
-#    credentials:
-#      username: ${{user}}
-#      password: ${{pass}}
-#    tag: master
+  push_step:
+    type: push
+    candidate: ${{build_step}}
+    credentials:
+      username: ${{user}}
+      password: ${{pass}}
+    tag: master
 
   launch_step:
     title: Step Title
