@@ -1,0 +1,17 @@
+version: '1.0'
+
+steps:
+
+  build_step:
+    type: build
+    description: spring maven project
+    image-name: ncodefresh/docker-spring
+    working_directory: ${{main_clone}}
+    dockerfile: Dockerfile
+    tag: latest
+
+  push_to_aws_ecr:
+    type: push
+    description: Free text description
+    candidate: ${{build_step}}
+    tag: UC2

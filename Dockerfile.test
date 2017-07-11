@@ -1,0 +1,3 @@
+FROM staging.cfcr.io/ncodefresh/dockerspringboot:master
+
+RUN mkdir /datadir

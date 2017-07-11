@@ -1,25 +1,21 @@
 version: '1.0'
-
 steps:
-  build-step-name:
+
+  freestyle_test:
+    image: node:latest
+    commands:
+      - cf_export TAG=qwerty
+
+  build_step:
     type: build
-    description: spring maven project
-    image-name: ncodefresh/docker-spring-boot-1
+    title: Building Docker Image
+    image_name: ncodefresh/docker-spring-boot
+    working_directory: ${{main_clone}}
     dockerfile: Dockerfile
-    tag: latest
+    tag: master
 
-  push-to-dockerhub:
+  push_step:
     type: push
-    candidate: ${{build-step-name}}
-    tag: latest
-
-#
-#  composition-step:
-#    type: composition
-#    composition-candidates:
-#      docker-spring-boot:
-#        image: 'ncodefresh/docker-spring-boot:latest'
-#        ports:
-#          - 8080
-#    composition-variables:
-#      - IMAGE_NAME=docker-spring-boot
+    candidate: ${{build_step}}
+    registry: docker-hub
+    tag: ${{TAG}}
