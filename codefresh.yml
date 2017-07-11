@@ -1,5 +1,11 @@
 version: '1.0'
 steps:
+
+  freestyle_test:
+    image: node:latest
+    commands:
+      - cf_export TAG=qwerty
+
   build_step:
     type: build
     title: Building Docker Image
@@ -11,14 +17,5 @@ steps:
   push_step:
     type: push
     candidate: ${{build_step}}
-    registry: staging.cfcr.io
-    credentials:
-      username: ${{user}}
-      password: ${{pass}}
-    tag: master
-
-  launch_step:
-    title: Step Title
-    type: launch-composition
-    composition: ./docker-compose.yml
-    environment_name: 'test'
+    registry: docker-hub
+    tag: ${{TAG}}
