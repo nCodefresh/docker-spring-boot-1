@@ -18,6 +18,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        System.out.println("ENV_VARS:" + System.getenv("TEST_ENV_VAR"));
         SpringApplication.run(Application.class, args);
     }
 }

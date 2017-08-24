@@ -1,11 +1,6 @@
 version: '1.0'
 steps:
 
-  freestyle_test:
-    image: node:latest
-    commands:
-      - cf_export TAG=qwerty
-
   build_step:
     type: build
     title: Building Docker Image
@@ -13,9 +8,3 @@ steps:
     working_directory: ${{main_clone}}
     dockerfile: Dockerfile
     tag: master
-
-  push_step:
-    type: push
-    candidate: ${{build_step}}
-    registry: docker-hub
-    tag: ${{TAG}}
